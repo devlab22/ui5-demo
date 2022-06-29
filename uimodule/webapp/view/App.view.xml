@@ -1,0 +1,226 @@
+<mvc:View
+		displayBlock="true"
+		xmlns:mvc="sap.ui.core.mvc"
+		controllerName="opensap.myapp.controller.App"
+		xmlns:core="sap.ui.core"
+		xmlns="sap.m">
+	<App id="App">
+		<pages>
+			<Page
+					title="openSAP - Developing with SAPUI5"
+					id="mainPage">
+				<content>
+					<IconTabBar
+							id="idTopLevelIconTabBar"
+							select="onSelectBar"
+							expand="onExpandBar">
+						<items>
+							<IconTabFilter
+									id="start"
+									key="start"
+									text="{i18n>gettingStartedFilter}"
+									icon="sap-icon://card"
+									count="0">
+								<core:Fragment
+										fragmentName="opensap.myapp.view.Carousel"
+										type="XML" />
+							</IconTabFilter>
+							<IconTabFilter
+									id="layouts"
+									key="layouts"
+									icon="sap-icon://begin"
+									iconColor="Positive"
+									count="6"
+									text="{i18n>layoutFilter}">
+								<core:Fragment
+										fragmentName="opensap.myapp.view.Layout"
+										type="XML" />
+							</IconTabFilter>
+							<IconTabFilter
+									id="northwindTab"
+									key="northwind"
+									count="0"
+									icon="sap-icon://compare"
+									iconColor="Critical"
+									text="Northwind">
+								<core:Fragment
+										fragmentName="opensap.myapp.view.CustomersTable"
+										type="XML" />
+								<Panel
+										id="OrderTab"
+										visible="false">
+									<mvc:XMLView
+											id="ordersTable"
+											viewName="opensap.myapp.view.NorthwindOrders" />
+								</Panel>
+							</IconTabFilter>
+							<IconTabFilter
+									visible="false"
+									text="{i18n>dataBindingFilter}"
+									key="db">
+								<content>
+									<List
+											headerText="{i18n>productListTitle}"
+											items="{products>/ProductSet}"
+											id="productList">
+										<items>
+											<ObjectListItem
+													title="{products>Name}"
+													number="{
+																parts:[
+																	{path: 'products>Price'},
+																	{path: 'products>CurrencyCode'}
+																		],
+																type: 'sap.ui.model.type.Currency',
+																formatOptions: {
+																	showMeasure: false
+																				} 
+																	}"
+													numberState="{= ${products>Price} > 500 ? 'Error' : 'Success'}"
+													numberUnit="{products>CurrencyCode}"
+													intro="{products>ProductID}">
+												<firstStatus>
+													<ObjectStatus text="{
+											parts: [
+												{path: 'products>WeightUnit'},
+												{path: 'products>WeightMeasure'}
+											],
+											formatter : '.formatter.delivery'
+										}" />
+												</firstStatus>
+											</ObjectListItem>
+										</items>
+									</List>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter
+									text="Northwind List"
+									icon="sap-icon://activities"
+									iconColor="Positive"
+									id="northwindList"
+									count="0"
+									key="northwindList">
+								<content>
+									<core:Fragment
+											fragmentName="opensap.myapp.view.NorthwindList"
+											type="XML" />
+									<Panel
+											id="customerOrderPanel"
+											visible="false">
+										<mvc:XMLView
+												id="ordersTableList"
+												viewName="opensap.myapp.view.NorthwindOrders" />
+									</Panel>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter
+									id="northwindSplitList"
+									text="SplitApp"
+									icon="sap-icon://group-2"
+									iconColor="Positive"
+									count="0"
+									key="northwindSplitList">
+								<content>
+									<SplitApp
+											id="SplitAppDemo"
+											initialDetail="detail"
+											initialMaster="master">
+										<detailPages>
+											<core:Fragment
+													fragmentName="opensap.myapp.view.CustomerDetails"
+													type="XML" />
+											<Page
+													id="detailsOrderPage"
+													title="Orders"
+													backgroundDesign="Solid"
+													showNavButton="true"
+													navButtonPress=".onPressDetailBack">
+												<Panel
+														headerText="All Orders"
+														id="idDetailsOrderPanel">
+													<mvc:XMLView
+															id="ordersTableSplit"
+															viewName="opensap.myapp.view.NorthwindOrders" />
+												</Panel>
+											</Page>
+										</detailPages>
+										<masterPages id="masterPage">
+											<Page
+													id="master"
+													title="Customers"
+													backgroundDesign="List">
+												<List
+														growing="true"
+														updateFinished="onUpdateFinishedCustomerSplitList"
+														growingScrollToLoad="false"
+														items="{
+														path: 'northwind>/Customers',
+														sorter : {
+															path: 'Country',
+															group: true
+															}
+														}"
+														id="CustomerSplitList">
+													<items>
+														<ObjectListItem
+																press="OnCompanySplitItemPress"
+																type="Navigation"
+																intro="{northwind>CustomerID}"
+																title="{northwind>CompanyName}"></ObjectListItem>
+													</items>
+												</List>
+											</Page>
+										</masterPages>
+									</SplitApp>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter
+									id="countryFilter"
+									text="Country"
+									icon="sap-icon://group-2"
+									iconColor="Positive"
+									count="{northwindModel>/countCountry}"
+									key="country">
+								<content>
+									<core:Fragment
+											fragmentName="opensap.myapp.view.Country"
+											type="XML" />
+								</content>
+							</IconTabFilter>
+							<IconTabFilter
+									id="treeControl"
+									text="tree"
+									icon="sap-icon://tree">
+								<content>
+									<mvc:XMLView
+											id="mainTreeControl"
+											viewName="opensap.myapp.view.TreeControl" />
+								</content>
+							</IconTabFilter>
+							<IconTabFilter
+									id="treeTableControl"
+									text="tree table"
+									icon="sap-icon://multiselect-none">
+								<content>
+									<mvc:XMLView
+											id="clothingControl"
+											viewName="opensap.myapp.view.Clothing" />
+								</content>
+							</IconTabFilter>
+							<IconTabFilter
+									id="userDataControl"
+									text="user data"									
+									icon="sap-icon://multiselect-none">
+								<content>
+									<mvc:XMLView
+											id="userControl"
+											viewName="opensap.myapp.view.UserData" />
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

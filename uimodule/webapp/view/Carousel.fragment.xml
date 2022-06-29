@@ -1,0 +1,127 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:f="sap.ui.layout.form"
+		xmlns:l="sap.ui.layout"
+		xmlns:core="sap.ui.core">
+	<Carousel>
+		<pages>
+			<Image
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Wikipedia_Hello_World_Graphic.svg/2000px-Wikipedia_Hello_World_Graphic.svg.png"
+					height="400px" />
+			<Image
+					src="images/C-Falter.jpg"
+					height="400px" />
+			<Image
+					src="images/Marienkafer.jpg"
+					height="400px" />
+			<Image
+					src="images/Grashupfer.jpg"
+					height="400px" />
+			<Image
+					src="images/Feuerkafer.jpg"
+					height="400px" />
+			<Image
+					src="images/Ameisen.jpg"
+					height="400px" />
+			<Image
+					src="images/Biene.jpg"
+					height="400px" />
+		</pages>
+	</Carousel>
+	<HBox>
+		<Button
+				text="{i18n>showHelloButtonText}"
+				press="onShowHello" />
+		<Input
+				value="{helloPanel>/recipient/name}"
+				description="Hello {helloPanel>/recipient/name}"
+				valueLiveUpdate="true"
+				width="60rem" />
+	</HBox>
+	<VBox>
+		<Panel
+				headerText="Delivery Methode"
+				width="40rem">
+			<f:SimpleForm
+					id="idDeliveryForm"
+					editable="true">
+				<f:content>
+					<Label text="Result" />
+					<Input
+							id="idResultForm"
+							value="Methode"
+							editable="false" />
+					<Label text="Weight" />
+					<Input
+							value="{
+							path : 'default>/WeightPost',
+							type : 'sap.ui.model.type.Float'
+							}"
+							id="idWeightForm" />
+					<Label text="WeightUnit" />
+					<Select id="idWeightUnitForm">
+						<items>
+							<core:Item text="KG" />
+							<core:Item text="G" />
+						</items>
+					</Select>
+				</f:content>
+			</f:SimpleForm>
+			<Toolbar
+					class="sapUiTinyMargin"
+					width="37rem">
+				<ToolbarSpacer />
+				<Button
+						text="calculate"
+						press="onCalculateForm"
+						icon="sap-icon://outbox"
+						type="Accept" />
+			</Toolbar>
+		</Panel>
+		<ToolbarSpacer width="5rem" />
+		<Panel
+				id="idBMIPanel"
+				headerText="BMI"
+				width="40rem">
+			<l:Grid>
+				<Text
+						id="idBmiIndex"
+						text="" />
+				<Text
+						id="idBmiDescr"
+						text="" />
+			</l:Grid>
+			<f:SimpleForm
+					id="idBMIForm"
+					editable="true"
+					width="35rem">
+				<f:content>
+					<Label text="Height in m" />
+					<Input
+							id="idHeightBmi"
+							value="{
+							path : 'default>/HeightBmi',
+							type : 'sap.ui.model.type.Float'
+						}" />
+					<Label text="Weight in kg" />
+					<Input
+							id="idWeightBmi"
+							value="{
+							path : 'default>/WeightBmi',
+							type : 'sap.ui.model.type.Float'
+						}" />
+				</f:content>
+			</f:SimpleForm>
+			<Toolbar
+					class="sapUiTinyMargin"
+					width="37rem">
+				<ToolbarSpacer />
+				<Button
+						text="calculate"
+						press="onCalculateBMI"
+						icon="sap-icon://outbox"
+						type="Accept" />
+			</Toolbar>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

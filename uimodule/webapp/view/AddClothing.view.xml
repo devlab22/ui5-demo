@@ -1,0 +1,66 @@
+<mvc:View
+		controllerName="opensap.myapp.controller.AddClothing"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:f="sap.ui.layout.form">
+	<Page
+			showNavButton="true"
+			title="add Clothing"
+			navButtonPress=".onNavBack">
+		<f:SimpleForm
+				id="simpleFormAddClothing"
+				editable="true"
+				title="{clothing>name}"
+				layout="ResponsiveGridLayout"
+				class="editableForm">
+			<f:content>
+				<Label text="Category" />
+				<Input id="addCategory" />
+				<Label text="Price" />
+				<Input
+						id="addPrice"
+						type="Number" />
+				<Label text="Currency" />
+				<Select
+						id="addCurrency"
+						items="{path: 'clothing>/currency', templateShareable: true}"
+						change=".onChangeCurrency"
+						forceSelection="false"
+						required="false">
+					<items>
+						<core:Item
+								key="{clothing>key}"
+								text="{clothing>value}"/>
+					</items>
+				</Select>
+				<Label text="Size" />
+				<Select
+						id="addSize"
+						items="{path: 'clothing>/sizes', templateShareable: true}"
+						required="false"
+						change=".onChangeSize"
+						forceSelection="false">
+					<items>
+						<core:Item
+								key="{clothing>key}"
+								text="{clothing>value}" />
+					</items>
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+		<Toolbar class="sapUiTinyMargin">
+			<ToolbarSpacer />
+			<Button
+					text="save"
+					icon="sap-icon://save"
+					press=".onSave"
+					type="Accept" />
+			<Button
+					text="cancel"
+					type="Reject"
+					press=".onCancel"
+					icon="sap-icon://save" />
+		</Toolbar>
+	</Page>
+</mvc:View>

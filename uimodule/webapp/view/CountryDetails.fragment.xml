@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core"
+                         xmlns:f="sap.ui.layout.form">
+	<ResponsivePopover id="countryPopover"
+	                   title="{country>name}"
+	                   class="sapUiPopWidthPadding">
+		<content>
+			<f:SimpleForm id="simpleFormCountry">
+				<f:content>
+					<Label text="Country"/>
+					<Text text="{country>name}"/>
+					<Label text="Capital"/>
+					<Text text="{country>capital}"/>
+					<Label text="Population"/>
+					<Text text="{country>population}"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

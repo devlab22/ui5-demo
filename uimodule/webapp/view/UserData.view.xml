@@ -1,0 +1,108 @@
+<mvc:View xmlns="sap.m"
+    controllerName="opensap.myapp.controller.UserData"
+    id="UserData"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <Table id="UserDataTable"
+        growing="true"
+        mode="SingleSelectMaster"
+        growingThreshold="20"
+        growingScrollToLoad="true"
+        noDataText="No Data"
+        items="{users>/UserDataSet}"
+        busyIndicatorDelay="0">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="Users" />
+                <ToolbarSpacer />                
+                <ToolbarSpacer />
+                <Button text="add" icon="sap-icon://add" press="onAdd" />
+                <Button text="remove" icon="sap-icon://delete" press="onRemove" />
+                <Button text="update" icon="sap-icon://edit" press="onUpdate" />
+                <SearchField width="50%"
+                    search="onSearchCountry" 
+                 />
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="Otype"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Realo"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Bname"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Stext"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Short"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Password"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="PwdState"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Begda"
+                    wrapping="false" />
+            </Column>
+            <Column>
+                <Text text="Endda"
+                    wrapping="false" />
+            </Column>
+        </columns>
+        <items>
+            <!-- filled via bindItems() in controller -->
+            <ColumnListItem type="Active">
+                <cells>
+                    <Text text="{users>Otype}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Realo}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Bname}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Stext}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Short}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Password}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>PwdState}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Begda}"
+                        wrapping="false" />
+                </cells>
+                <cells>
+                    <Text text="{users>Endda}"
+                        wrapping="false" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+</mvc:View>

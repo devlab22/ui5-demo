@@ -1,0 +1,78 @@
+<mvc:View
+    controllerName="opensap.myapp.controller.Clothing"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:dnd="sap.ui.core.dnd"
+    height="100%">
+
+    <TreeTable
+        id="TreeTableBasic"
+        rows="{
+							path:'clothing>/catalog/clothing', 
+							parameters: {
+									arrayNames:['categories']
+										}
+						   }"
+        selectionMode="Single"
+        enableSelectAll="true"
+        visibleRowCount="20"
+        width="auto"
+        editable="false"
+        class="sapUiResponsiveMargin"
+        visibleRowCountMode="Interactive"
+        ariaLabelledBy="title">
+
+        <dragDropConfig>
+            <dnd:DragDropInfo
+                sourceAggregation="rows"
+                targetAggregation="rows"
+                dragStart="onDragStart"
+                drop="onDrop" />
+        </dragDropConfig>
+
+        <extension>
+            <m:OverflowToolbar style="Clear">
+                <m:Title id="title" text="Clothing" />
+                <m:ToolbarSpacer />
+                <m:Button icon="sap-icon://add" press="onAddClothing" />
+                <m:Button text="Expand all" press="onExpandAll" />
+                <m:Button text="Collapse all" press="onCollapseAll" />
+                <m:Button text="Collapse selection" press="onCollapseSelection" />
+                <m:Button text="Expand first level" press="onExpandFirstLevel" />
+                <m:Button text="Expand selection" press="onExpandSelection" />
+                <m:Button text="Expand selection All" press="onExpandSelectionAll" visible="false" />
+            </m:OverflowToolbar>
+        </extension>
+        <contextMenu></contextMenu>
+        <columns>
+            <Column width="25rem">
+                <m:Label text="Categories" />
+                <template>
+                    <m:ObjectIdentifier title="{clothing>name}" titleActive="true" titlePress="onShowDetailClothing" />
+                </template>
+            </Column>
+            <Column width="9rem">
+                <m:Label text="Price" />
+                <template>
+                    <u:Currency value="{clothing>amount}" currency="{clothing>currency}" />
+                </template>
+            </Column>
+            <Column width="11rem">
+                <m:Label text="Size" />
+                <template>
+                    <m:Select
+                        items="{path: 'clothing>/sizes', templateShareable: true}"
+                        selectedKey="{clothing>size}"
+                        visible="{= !!${clothing>size}}"
+                        forceSelection="false">
+                        <core:Item key="{clothing>key}" text="{clothing>value}" />
+                    </m:Select>
+                </template>
+            </Column>
+        </columns>
+    </TreeTable>
+
+</mvc:View>

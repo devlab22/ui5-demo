@@ -1,0 +1,106 @@
+<mvc:View displayBlock="true"
+          xmlns:mvc="sap.ui.core.mvc"
+          controllerName="opensap.myapp.controller.NorthwindTable"
+          xmlns:core="sap.ui.core"
+          xmlns="sap.m">
+	<Panel id="panelOrder"
+	       class="sapUiResponsiveMargin">
+		<IconTabBar select=".onFilterSelectOrder">
+			<items>
+				<IconTabFilter showAll="true"
+				               text="All"
+				               count="0"
+				               id="All"
+				               key="All"/>
+				<IconTabSeparator/>
+				<IconTabFilter icon="sap-icon://begin"
+				               iconColor="Positive"
+				               text="ok"
+				               count="0"
+				               id="Ok"
+				               key="Ok"/>
+				<IconTabFilter icon="sap-icon://compare"
+				               iconColor="Critical"
+				               text="Heavy"
+				               count="0"
+				               id="Heavy"
+				               key="Heavy"/>
+				<IconTabFilter icon="sap-icon://inventory"
+				               iconColor="Negative"
+				               count="0"
+				               text="Overweight"
+				               id="Overweight"
+				               key="Overweight"/>
+			</items>
+			<content>
+				<Table id="OrderTable"
+				       growing="true"
+				       growingThreshold="10"
+					   fixedLayout="false"
+				       growingScrollToLoad="true"
+				       noDataText="No Data"
+					   width="auto"
+					   class="sapUiResponsiveMargin"
+				       selectionChange="onOrderPress"
+				       mode="SingleSelectLeft"
+				       updateFinished="onUpdateFinishedOrderTable"
+				       busyIndicatorDelay="0">
+					<headerToolbar>
+						<Toolbar>
+							<Title id="OrderTitle"
+							       text="Orders"/>
+							<ToolbarSpacer/>
+							<ToolbarSpacer/>
+							<SearchField width="50%"
+							             search="onSearchOrder"/>
+						</Toolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<OverflowToolbar>
+							<Label text="Wide range of available orders"/>
+						</OverflowToolbar>
+					</infoToolbar>
+					<columns>
+						<Column>
+							<Text text="OrderID"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="EmployeeId"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="OrderDate"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="RequiredDate"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="ShippedDate"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="Freight"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="CustomerId"
+							      wrapping="false"/>
+						</Column>
+					</columns>
+					<items>
+					
+				</items>
+				</Table>
+			</content>
+		</IconTabBar>
+		<Panel id="orderDetailsPanel"
+		       class="sapUiResponsiveMargin"
+		       visible="false">
+			<mvc:XMLView id="ordersDetailsTable"
+			             viewName="opensap.myapp.view.OrderDetailsDialog"/>
+		</Panel>
+	</Panel>
+</mvc:View>

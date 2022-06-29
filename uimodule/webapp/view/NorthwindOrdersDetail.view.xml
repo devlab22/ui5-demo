@@ -1,0 +1,105 @@
+<mvc:View displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
+	controllerName="opensap.myapp.controller.NorthwindOrdersDetail"
+	xmlns="sap.m">
+	<Page showNavButton="true"
+		navButtonPress=".onNavBack">
+		<Panel id="panelOrder"
+			class="sapUiResponsiveMargin">
+			<IconTabBar select=".onFilterSelectOrder">
+				<items>
+					<IconTabFilter showAll="true"
+						text="All"
+						count="0"
+						id="All"
+						key="All" />
+					<IconTabSeparator />
+					<IconTabFilter icon="sap-icon://begin"
+						iconColor="Positive"
+						text="Ok"
+						count="0"
+						id="Ok"
+						key="Ok" />
+					<IconTabFilter icon="sap-icon://compare"
+						iconColor="Critical"
+						text="Heavy"
+						count="0"
+						id="Heavy"
+						key="Heavy" />
+					<IconTabFilter icon="sap-icon://inventory"
+						iconColor="Negative"
+						count="0"
+						text="Overweight"
+						id="Overweight"
+						key="Overweight" />
+				</items>
+				<content>
+					<Table id="OrderTable"
+						growing="true"
+						growingThreshold="20"
+						growingScrollToLoad="true"
+						noDataText="No Data"
+						mode="SingleSelectMaster"
+						selectionChange="onOrderPress"					
+						updateFinished="onUpdateFinishedOrderTable"
+						width="auto"
+						class="sapUiResponsiveMargin"
+						busyIndicatorDelay="0">
+						<headerToolbar>
+							<Toolbar>
+								<Title id="OrderTitle" />
+								<ToolbarSpacer />
+								<ToolbarSpacer />
+								<SearchField width="50%"
+									search="onSearchOrder" />
+							</Toolbar>
+						</headerToolbar>
+
+						<infoToolbar>
+							<OverflowToolbar>
+								<tnt:InfoLabel text="Wide range of available products" 
+											   renderMode="Narrow" 
+											   colorScheme="1" 
+											   displayOnly="true" />											   
+							</OverflowToolbar>
+						</infoToolbar>
+
+						<columns>
+							<Column>
+								<Text text="OrderID"
+									wrapping="false" />
+							</Column>
+							<Column>
+								<Text text="EmployeeId"
+									wrapping="false" />
+							</Column>
+							<Column>
+								<Text text="OrderDate"
+									wrapping="false" />
+							</Column>
+							<Column>
+								<Text text="RequiredDate"
+									wrapping="false" />
+							</Column>
+							<Column>
+								<Text text="ShippedDate"
+									wrapping="false" />
+							</Column>
+							<Column>
+								<Text text="Freight"
+									wrapping="false" />
+							</Column>
+							<Column>
+								<Text text="CustomerId"
+									wrapping="false" />
+							</Column>
+						</columns>
+						<items></items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</Panel>
+	</Page>
+</mvc:View>

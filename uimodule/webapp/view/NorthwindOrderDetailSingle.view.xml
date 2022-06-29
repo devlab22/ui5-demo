@@ -1,0 +1,147 @@
+<mvc:View xmlns="sap.m"
+          controllerName="opensap.myapp.controller.NorthwindOrderDetailSingle"
+          id="fragmentOrderDetailsDialog"
+          xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:tnt="sap.tnt"
+          xmlns:core="sap.ui.core">
+	<Page showNavButton="true"
+	      navButtonPress=".onNavBack">
+		<Panel id="panelOrderDetails"
+		       class="sapUIResponsiveMargin"
+		       headerText="Order details">
+			<IconTabBar select="onFilterSelectOrderDetails">
+				<items>
+					<IconTabFilter showAll="true"
+					               text="All"
+					               count="0"
+					               id="All"
+					               key="All"/>
+					<IconTabSeparator/>
+					<IconTabFilter icon="sap-icon://begin"
+					               iconColor="Positive"
+					               text="Cheap"
+					               count="0"
+					               id="Ok"
+					               key="Ok"/>
+					<IconTabFilter icon="sap-icon://loan"
+					               iconColor="Critical"
+					               text="Ok"
+					               count="0"
+					               id="Heavy"
+					               key="Heavy"/>
+					<IconTabFilter icon="sap-icon://waiver"
+					               iconColor="Negative"
+					               count="0"
+					               text="Expensive"
+					               id="Overweight"
+					               key="Overweight"/>
+				</items>
+				<content>
+					<Table id="orderTableDetails"
+					       growing="true"
+						   fixedLayout="false"
+					       growingThreshold="20"
+					       updateFinished="onUpdateFinishedOrderTableDetails"
+					       growingScrollToLoad="false"
+						   width="auto"
+					       class="sapUiResponsiveMargin"
+					       noDataText="No Data"
+					       busyIndicatorDelay="0">
+						<headerToolbar>
+							<Toolbar>
+								<Title id="OrderTitleDetails"
+								       text="Orders"/>
+								<ToolbarSpacer/>
+								<ToolbarSpacer/>
+								<SearchField width="50%"
+								             search="onSearchOrder"/>
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar>
+							<OverflowToolbar>
+								<tnt:InfoLabel text="Wide range of available products" 
+											   renderMode="Narrow" 
+											   colorScheme="1" 
+											   displayOnly="true" />
+							</OverflowToolbar>
+						</infoToolbar>
+						<columns>
+							<Column>
+								<Text text="OrderID"
+								      wrapping="false"/>
+							</Column>
+							<Column>
+								<Text text="ProductID"
+								      wrapping="false"/>
+							</Column>
+							<Column>
+								<Text text="Unit Price"
+								      wrapping="false"/>
+							</Column>
+							<Column>
+								<Text text="Quantity"
+								      wrapping="false"/>
+							</Column>
+							<Column>
+								<Text text="Discount"
+								      wrapping="false"/>
+							</Column>
+							<Column>
+								<Text text="Summe"
+								      wrapping="false"/>
+							</Column>
+						</columns>
+						<items>
+						<ColumnListItem type="Active">
+				<cells>
+					<ObjectIdentifier title="{country>name}"
+									  text="{country>demonym}"
+					                  titlePress="onShowDetailCountry"
+					                  titleActive="true"/>
+				</cells>
+				<cells>
+					<Text text="{northwind>OrderId}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{northwind>ProductID}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{
+							parts: [
+								{path: 'northwind>UnitPrice'},
+								{path: 'northwindModel>/currency'}
+							],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {showMeasure: true }
+							}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{northwind>Quantity}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{northwind>Discount}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{ 
+							parts: [ 
+								{path: 'northwind>UnitPrice'}, 
+								{path: 'northwind>Quantity'}, 
+								{path: 'northwindModel>/currency'} 
+								], 
+							formatter: '.formatter.calculatePrice' 
+							}"
+					      wrapping="false"/>
+				</cells>
+				</ColumnListItem>
+			</items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</Panel>
+	</Page>
+</mvc:View>

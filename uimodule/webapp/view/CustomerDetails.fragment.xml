@@ -1,0 +1,73 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:f="sap.ui.layout.form"
+						 xmlns:lh="opensap.myapp.control"
+                         xmlns:core="sap.ui.core">
+	<Page id="detail"
+	      title="Details"
+	      backgroundDesign="Solid">
+		<Panel expandable="{device>/system/phone}"
+		       expanded="true"
+		       class="sapUiResponsiveMargin"
+		       headerText="Customer"
+		       width="auto">
+			<f:SimpleForm id="SimpleFormCust">
+				<f:content>
+					<Label text="Customer-ID"/>
+					<Text text="{northwind>CustomerID}"/>
+					<Label text="Customer"/>
+					<Text text="{northwind>CompanyName}"/>
+				</f:content>
+			</f:SimpleForm>
+		</Panel>
+		<Panel expandable="{device>/system/phone}"
+		       expanded="true"
+		       class="sapUiResponsiveMargin"
+		       headerText="Contact"
+		       width="auto">
+			<f:SimpleForm id="SimpleContactCust">
+				<f:content>
+					<Label text="Contact Title"/>
+					<Text text="{northwind>ContactTitle}"/>
+					<Label text="Contact Name"/>
+					<Text text="{northwind>ContactName}"/>
+					<Label text="Phone"/>
+					<Text text="{northwind>Phone}"/>
+				</f:content>
+			</f:SimpleForm>
+		</Panel>
+		<Panel class="sapUiResponsiveMargin"
+		       width="auto"
+		       headerText="Address"
+		       expandable="{device>/system/phone}"
+		       expanded="false">
+			<content>
+				<List id="detailCustomerList">
+					<items>
+						<StandardListItem icon="sap-icon://building"
+						                  title="{northwind>Address}"/>
+						<StandardListItem icon="sap-icon://fax-machine"
+						                  title="{northwind>Fax}"/>
+						<StandardListItem icon="sap-icon://world"
+						                  title="e-mail"/>
+						<StandardListItem icon="sap-icon://map"
+						                  title="{northwind>PostalCode} {northwind>City}"/>
+						<StandardListItem icon="sap-icon://map"
+						                  title="{
+														parts: [
+															'northwind>Country'
+														],
+														formatter: '.formatter.getCountryCodeDuo'
+													}"/>
+					</items>
+				</List>
+				<lh:Rating  id="rating" 
+				  			maxValue="5" 
+							value="0" 
+							class="sapUiSmallMarginBeginEnd" 
+							change=".onRatingChange"/>
+				<Button text="Show Orders"
+				        press=".onPressNavToDetail"/>
+			</content>
+		</Panel>
+	</Page>
+</core:FragmentDefinition>

@@ -1,0 +1,65 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core">
+	<List headerText="Company List"
+	      growing="true"
+	      growingThreshold="5"
+		  width="auto"
+		  class="sapUiResponsiveMargin"
+	      updateFinished="onUpdateFinishedCustomerList"
+	      growingScrollToLoad="false"	      
+	      items="{
+											path: 'northwind>/Customers',
+											sorter : {
+													path: 'Country',
+													group: true
+													 }
+											}"
+	      id="CustomerList">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Company toolbar"/>
+				<ToolbarSpacer/>
+				<SearchField width="50%"
+				             search="OnSearchCompanyList"/>
+			</Toolbar>
+		</headerToolbar>
+		<items>
+			<ObjectListItem title="{northwind>CompanyName}"
+			                number="{northwind>Country}"
+			                numberState="{
+																	parts: [
+																		{path: 'northwind>Country'}
+																	],
+																	formatter : '.formatter.getCountryState'
+																	}"
+			                numberUnit="{
+																	parts: [
+																		{path: 'northwind>Country'}
+																	],
+																	formatter : '.formatter.getCountryCode'
+																	}"
+			                press="OnCompanyItemPress"
+			                type="Navigation"
+			                intro="{northwind>CustomerID}">
+				<firstStatus>
+					<ObjectStatus title="{northwind>ContactTitle}"
+					              text="{northwind>ContactName}"/>
+				</firstStatus>
+				<secondStatus>
+					<ObjectStatus title="Phone"
+					              text="{northwind>Phone}"/>
+				</secondStatus>
+				<attributes>
+					<ObjectAttribute title="Country"
+					                 text="{northwind>Country}"/>
+					<ObjectAttribute title="Street"
+					                 text="{northwind>Address}"/>
+					<ObjectAttribute title="City"
+					                 text="{northwind>City}"/>
+					<ObjectAttribute title="PostalCode"
+					                 text="{northwind>PostalCode}"/>
+				</attributes>
+			</ObjectListItem>
+		</items>
+	</List>
+</core:FragmentDefinition>

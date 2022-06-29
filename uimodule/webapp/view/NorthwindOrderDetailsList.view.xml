@@ -1,0 +1,71 @@
+<mvc:View
+        displayBlock="true"
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="opensap.myapp.controller.NorthwindOrderDetailsList"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m">
+    <Page
+            showNavButton="true"
+            navButtonPress=".onNavBack">
+        <Panel id="panel">
+            <IconTabBar select=".onFilterSelectOrder">
+                <items>
+                    <IconTabFilter
+                            showAll="true"
+                            text="All"
+                            count="0"
+                            id="All"
+                            key="All" />
+                    <IconTabSeparator />
+                    <IconTabFilter
+                            icon="sap-icon://begin"
+                            design="Horizontal"
+                            iconColor="Positive"
+                            text="Cheap: bis 5 {northwindModel>/currency} per Unit"
+                            count="0"
+                            id="Ok"
+                            key="Ok" />
+                    <IconTabFilter
+                            icon="sap-icon://compare"
+                            iconColor="Critical"
+                            design="Horizontal"
+                            text="Ok: 5 bis 50 {northwindModel>/currency} per Unit"
+                            count="0"
+                            id="Heavy"
+                            key="Heavy" />
+                    <IconTabFilter
+                            icon="sap-icon://inventory"
+                            iconColor="Negative"
+                            design="Horizontal"
+                            count="0"
+                            text="Expensive: over 50 {northwindModel>/currency} per Unit"
+                            id="Overweight"
+                            key="Overweight" />
+                </items>
+                <content>
+                    <List
+                            headerText="Details"
+                            growing="true"
+                            growingThreshold="10"
+                            width="auto"
+                            class="sapUiResponsiveMargin"
+                            updateFinished="onUpdateFinished"
+                            id="orderDetailsList"
+                            growingScrollToLoad="false">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title id="title"
+                                       text="Details" />
+                                <ToolbarSpacer />
+                                <ToolbarSpacer />
+                                <SearchField
+                                        width="50%"
+                                        search="onSearch" />
+                            </Toolbar>
+                        </headerToolbar>
+                    </List>
+                </content>
+            </IconTabBar>
+        </Panel>
+    </Page>
+</mvc:View>

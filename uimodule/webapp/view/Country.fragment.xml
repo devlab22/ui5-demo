@@ -1,0 +1,162 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:l="sap.ui.layout"
+                         xmlns:f="sap.ui.layout.form"
+                         xmlns:semantic="sap.m.semantic"
+                         xmlns:core="sap.ui.core">
+	<Table id="CountryTable"
+	       growing="true"
+	       growingThreshold="20"
+	       growingScrollToLoad="true"
+	       updateFinished="onUpdateFinishedCountryTable"
+	       noDataText="No Data"
+		   items="{
+			path: 'country>/',
+			sorter:{
+				path: 'region',
+				group: true
+					}
+			}"
+	       busyIndicatorDelay="0">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Country"/>
+				<ToolbarSpacer/>
+				<ToolbarSpacer/>
+				<SearchField width="50%"
+				             search="onSearchCountry"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Name"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="topLevelDomain"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="alpha2Code"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="alpha3Code"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="capital"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="region"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="subregion"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="population"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="demonym"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="area"
+				      wrapping="false"/>
+			</Column>
+			<Column>
+				<Text text="flag"
+				      wrapping="false"/>
+			</Column>
+		</columns>
+		<items>
+			<!-- filled via bindItems() in controller -->
+			<ColumnListItem type="Active">
+				<cells>
+					<ObjectIdentifier title="{country>name}"
+									  text="{country>demonym}"
+					                  titlePress="onShowDetailCountry"
+					                  titleActive="true"/>
+				</cells>
+				<cells>
+					<Text text="{country>topLevelDomain}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{country>alpha2Code}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{country>alpha3Code}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{country>capital}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{country>region}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<Text text="{country>subregion}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<ObjectNumber number="{
+										path: 'country>population',
+										formatter: '.formatter.getNumberExt'
+										  }"																				
+					              state="{
+											parts: [{path: 'country>population'}],
+											type: 'sap.ui.model.type.Integer',
+											formatter: '.formatter.getPopulationState'
+											}"/>
+				</cells>
+				<cells>
+					<Text text="{country>demonym}"
+					      wrapping="false"/>
+				</cells>
+				<cells>
+					<ObjectNumber number="{
+										path: 'country>area',
+										formatter: '.formatter.getNumberExt'
+										}"	
+								  unit="km²"
+					              state="{
+											parts: [{path: 'country>area'}],
+											formatter: '.formatter.getAreaState'
+											}"/>
+				</cells>
+				<cells>
+					<Image src="{country>flag}"
+					       alt="flag"
+					       height="3em"
+					       width="5em"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	
+	<!--
+	<ResponsivePopover id="countryPopover"
+	                   title="{country>name}"
+	                   class="sapUiPopWidthPadding">
+		<content>
+			<f:SimpleForm id="simpleFormCountry">
+				<f:content>
+					<Label text="Country"/>
+					<Text  text="{country>name}"/>
+					<Label text="Capital"/>
+					<Text  text="{country>capital}"/>
+					<Label text="Population"/>
+					<Text  text="{country>population}"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</ResponsivePopover>
+	-->
+</core:FragmentDefinition>

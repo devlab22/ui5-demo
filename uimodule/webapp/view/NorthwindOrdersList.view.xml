@@ -1,0 +1,79 @@
+<mvc:View
+        displayBlock="true"
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="opensap.myapp.controller.NorthwindOrdersList"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m">
+    <Page
+            showNavButton="true"
+            navButtonPress=".onNavBack">
+        <Panel
+                id="panelOrdersList"
+                class="sapUiResponsiveMargin">
+            <IconTabBar select=".onFilterSelectOrder">
+                <items>
+                    <IconTabFilter
+                            showAll="true"
+                            text="All"
+                            count="0"
+                            id="All"
+                            key="All" />
+                    <IconTabSeparator />
+                    <IconTabFilter
+                            icon="sap-icon://begin"
+                            iconColor="Positive"
+                            design="Horizontal"
+                            text="Ok: bis 5kg"
+                            count="0"
+                            id="Ok"
+                            key="Ok" />
+                    <IconTabFilter
+                            icon="sap-icon://compare"
+                            iconColor="Information"
+                            text="Normally: 5 bis 10kg"
+                            design="Horizontal"
+                            count="0"
+                            id="Normally"
+                            key="Normally" />
+                    <IconTabFilter
+                            icon="sap-icon://compare"
+                            iconColor="Critical"
+                            text="Heavy: 10 bis 20kg"
+                            design="Horizontal"
+                            count="0"
+                            id="Heavy"
+                            key="Heavy" />
+                    <IconTabFilter
+                            icon="sap-icon://inventory"
+                            iconColor="Negative"
+                            count="0"
+                            design="Horizontal"
+                            text="Overweight: over 20kg"
+                            id="Overweight"
+                            key="Overweight" />
+                </items>
+                <content>
+                    <List
+                            headerText="Company List"
+                            growing="true"
+                            growingThreshold="10"
+                            width="auto"
+                            class="sapUiResponsiveMargin"
+                            updateFinished="onUpdateFinished"
+                            id="ordersList"
+                            growingScrollToLoad="false">
+                            <headerToolbar>
+                                <Toolbar>
+                                        <Title id="title"/>
+                                        <ToolbarSpacer/>
+                                        <ToolbarSpacer/>
+                                        <SearchField width="50%"
+                                                     search="onSearch"/>
+                                </Toolbar>
+                        </headerToolbar>
+                        </List>
+                </content>
+            </IconTabBar>
+        </Panel>
+    </Page>
+</mvc:View>

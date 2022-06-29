@@ -1,0 +1,212 @@
+{
+	"_version": "1.3.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "opensap.myapp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"northwindRemote": {
+				"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"annotations": []
+				}
+			},
+			"userDataRemote": {
+				"uri": "/sap/opu/odata/sap/ZVE_USERUI5_SRV",
+				"type": "OData",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"odataVersion": "2.0",
+					"annotations": []
+				}
+			},
+			"componentsRemote": {
+				"uri": "/sap/opu/odata/sap/ZJB_TEST_UI5_SRV",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"annotations": []
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"rootView": {
+			"viewName": "opensap.myapp.view.App",
+			"type": "XML",
+			"id": "App"
+		},
+		"handleValidation": true,
+		"autoPrefixId": true,
+		"dependencies": {
+			"minUI5Version": "1.34",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.34.0"
+				},
+				"sap.m": {
+					"minVersion": "1.34.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.34.0"
+				}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "opensap.myapp.i18n.i18n"
+				}
+			},
+			"address": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Address.json"
+			},
+			"default": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/default.json"
+			},
+			"helloPanel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/HelloPanel.json"
+			},
+			"northwindRemote": {
+				"dataSource": "northwindRemote"
+			},
+			"userDataModel": {
+				"dataSource": "userDataRemote",
+				"preload": true,
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"refreshAfterChange": false
+				}
+			},
+			"componentsModel": {
+				"dataSource": "componentsRemote"
+			},
+			"treeControl": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/treeExample.json"
+			},
+			"clothing": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/clothing.json"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "opensap.myapp.view",
+				"controlId": "App",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "northwindOrdersList/{CustomerPath}",
+					"name": "northwindOrdersList",
+					"target": "northwindOrdersList"
+				},
+				{
+					"pattern": "northwindOrderDetailsList/{OrderPath}",
+					"name": "northwindOrderDetailsList",
+					"target": "northwindOrderDetailsList"
+				},
+				{
+					"pattern": "northwindOrders/{CustomerPath}",
+					"name": "northwindOrders",
+					"target": "northwindOrders"
+				},
+				{
+					"pattern": "northwindOrderDetails/{OrderPath}",
+					"name": "northwindOrderDetails",
+					"target": "northwindOrderDetails"
+				},
+				{
+					"pattern": "addClothing/{ClothingPath}",
+					"name": "addClothing",
+					"target": "addClothing"
+				}
+			],
+			"targets": {
+				"home": {
+					"viewId": "app",
+					"viewName": "App"
+				},
+				"northwindOrdersList": {
+					"viewId": "northwindOrdersList",
+					"viewName": "NorthwindOrdersList",
+					"viewLevel": 1
+				},
+				"northwindOrderDetailsList": {
+					"viewId": "northwindOrderDetailsList",
+					"viewName": "NorthwindOrderDetailsList",
+					"viewLevel": 2
+				},
+				"northwindOrders": {
+					"viewId": "northwindOrdersDetail",
+					"viewName": "NorthwindOrdersDetail",
+					"viewLevel": 1
+				},
+				"northwindOrderDetails": {
+					"viewId": "northwindOrderDetailSingle",
+					"viewName": "NorthwindOrderDetailSingle",
+					"viewLevel": 2
+				},
+				"notFound": {
+					"viewId": "notFound",
+					"viewName": "NotFound",
+					"transition": "show"
+				},
+				"addClothing": {
+					"viewId": "addClothing",
+					"viewName": "AddClothing",
+					"viewLevel": 1
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	}
+}

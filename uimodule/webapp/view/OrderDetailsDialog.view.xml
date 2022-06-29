@@ -1,0 +1,93 @@
+<mvc:View xmlns="sap.m"
+          controllerName="opensap.myapp.controller.OrderDetailsDialog"
+          id="fragmentOrderDetailsDialog"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:core="sap.ui.core">
+	<Panel id="panelOrderDetails"
+	       class="sapUIResponsiveMargin"
+	       headerText="Order details">
+		<IconTabBar select="onFilterSelectOrderDetails">
+			<items>
+				<IconTabFilter showAll="true"
+				               text="All"
+				               count="0"
+				               id="All"
+				               key="All"/>
+				<IconTabSeparator/>
+				<IconTabFilter icon="sap-icon://begin"
+				               iconColor="Positive"
+				               text="Cheap"
+				               count="0"
+				               id="Ok"
+				               key="Ok"/>
+				<IconTabFilter icon="sap-icon://loan"
+				               iconColor="Critical"
+				               text="Ok"
+				               count="0"
+				               id="Heavy"
+				               key="Heavy"/>
+				<IconTabFilter icon="sap-icon://waiver"
+				               iconColor="Negative"
+				               count="0"
+				               text="Expensive"
+				               id="Overweight"
+				               key="Overweight"/>
+			</items>
+			<content>
+				<Table id="orderTableDetails"
+				       growing="true"
+				       growingThreshold="10"
+					   width="auto"
+					   class="sapUiResponsiveMargin"
+				       updateFinished="onUpdateFinishedOrderTableDetails"
+				       growingScrollToLoad="false"
+				       noDataText="No Data"
+				       busyIndicatorDelay="0">
+					<headerToolbar>
+						<Toolbar>
+							<Title id="OrderTitleDetails"
+							       text="Orders"/>
+							<ToolbarSpacer/>
+							<ToolbarSpacer/>
+							<SearchField width="50%"
+							             search="onSearchOrder"/>
+						</Toolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<OverflowToolbar>
+							<Label text="Wide range of available products"/>
+						</OverflowToolbar>
+					</infoToolbar>
+					<columns>
+						<Column>
+							<Text text="OrderID"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="ProductID"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="Unit Price"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="Quantity"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="Discount"
+							      wrapping="false"/>
+						</Column>
+						<Column>
+							<Text text="Summe"
+							      wrapping="false"/>
+						</Column>
+					</columns>
+					<items>
+			</items>
+				</Table>
+			</content>
+		</IconTabBar>
+	</Panel>
+</mvc:View>
