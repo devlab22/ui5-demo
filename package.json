@@ -20,7 +20,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@ui5/cli": "^2.14.9",
+    "@ui5/cli": "^2.14.16",
     "cors-anywhere": "^0.4.4",
     "eslint": "^7.29.0",
     "karma": "^6.3.4",

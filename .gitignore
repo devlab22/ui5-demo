@@ -3,9 +3,10 @@ node_modules/
 .mta/
 *.mtar
 dist/
-package-lock.json
 mta_archives/
 deployer/resources/
 Makefile*
 mta-*
 approuter/*/webapp/
+resources/
+resources.7z
