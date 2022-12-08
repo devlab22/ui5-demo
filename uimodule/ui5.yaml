@@ -29,8 +29,8 @@ server:
           target: http://lhd.lighthouse-it.de:8000
           auth:
             fromEnv: true
-            user: VENGELHARD
-            pass: slava31
+            user: 
+            pass: 
         /destinations/northwind/:
           target: https://services.odata.org
           auth:
