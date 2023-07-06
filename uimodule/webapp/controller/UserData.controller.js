@@ -26,22 +26,17 @@ sap.ui.define([
                 return;
             }
 
-            var sContext = oTable.getSelectedContexts(true)[0].sPath;
-            
-            console.log(sContext);
-            var message = new Text();
+            var sContext = oTable.getSelectedContexts()[0].getPath();
+            var oModel = this.getModel("users")
+
+            var message = new Text().bindText(sContext  + "/Stext");
+            message.setModel(oModel)
                    
-            message.bindText({
-                path: sContext,
-                value: "{users>Stext}",
-                model: "users"
-            });
-            
-            console.log(message)
-            MessageBox.confirm(message.getText(), {
+            MessageBox.confirm(`Do you want to delete ${message.getText()}?`, {
                 onClose: (okcode) => {
                     if(okcode === "OK"){
                         console.log("delete");
+                        console.log(oModel)
                     }
                 }
             });
@@ -59,13 +54,15 @@ sap.ui.define([
                 return;
             }
 
-            var sContext = oTable.getSelectedContexts(true)[0].sPath;
+            var sContext = oTable.getSelectedContexts(true)[0].getPath();
             
         },
 
-        onUserPress: function (oEvent) {
-            console.log(oEvent)
-        }
+        onSelectionChange: function(oEvent) {
+            var sContext = oEvent.getSource()._aSelectedPaths[0]
+            console.log(sContext)
+            
+          }
 
     });
 });

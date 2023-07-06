@@ -5,8 +5,10 @@
                          xmlns:core="sap.ui.core">
 	<Table id="CountryTable"
 	       growing="true"
+		   width="100%"
 	       growingThreshold="20"
 	       growingScrollToLoad="true"
+		   alternateRowColors="true"
 	       updateFinished="onUpdateFinishedCountryTable"
 	       noDataText="No Data"
 		   items="{

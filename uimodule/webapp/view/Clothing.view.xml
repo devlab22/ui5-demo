@@ -16,7 +16,7 @@
 									arrayNames:['categories']
 										}
 						   }"
-        selectionMode="Single"
+        selectionMode="MultiToggle"
         enableSelectAll="true"
         visibleRowCount="20"
         width="auto"
@@ -32,6 +32,10 @@
                 dragStart="onDragStart"
                 drop="onDrop" />
         </dragDropConfig>
+
+        <contextMenu>
+           
+        </contextMenu>
 
         <extension>
             <m:OverflowToolbar style="Clear">
