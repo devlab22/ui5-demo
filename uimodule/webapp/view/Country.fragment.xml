@@ -8,7 +8,9 @@
 		   width="100%"
 	       growingThreshold="20"
 	       growingScrollToLoad="true"
+		   itemPress="onCountryPress"
 		   alternateRowColors="true"
+		   mode="SingleSelectMaster"
 	       updateFinished="onUpdateFinishedCountryTable"
 	       noDataText="No Data"
 		   items="{
@@ -34,7 +36,7 @@
 				      wrapping="false"/>
 			</Column>
 			<Column>
-				<Text text="topLevelDomain"
+				<Text text="alphaCode"
 				      wrapping="false"/>
 			</Column>
 			<Column>
@@ -62,7 +64,7 @@
 				      wrapping="false"/>
 			</Column>
 			<Column>
-				<Text text="demonym"
+				<Text text="UN Member"
 				      wrapping="false"/>
 			</Column>
 			<Column>
@@ -78,21 +80,21 @@
 			<!-- filled via bindItems() in controller -->
 			<ColumnListItem type="Active">
 				<cells>
-					<ObjectIdentifier title="{country>name}"
-									  text="{country>demonym}"
+					<ObjectIdentifier title="{country>name/common}"
+									  text="{country>name/official}"
 					                  titlePress="onShowDetailCountry"
 					                  titleActive="true"/>
 				</cells>
 				<cells>
-					<Text text="{country>topLevelDomain}"
+					<Text text="{country>cioc}"
 					      wrapping="false"/>
 				</cells>
 				<cells>
-					<Text text="{country>alpha2Code}"
+					<Text text="{country>cca2}"
 					      wrapping="false"/>
 				</cells>
 				<cells>
-					<Text text="{country>alpha3Code}"
+					<Text text="{country>cca3}"
 					      wrapping="false"/>
 				</cells>
 				<cells>
@@ -119,7 +121,7 @@
 											}"/>
 				</cells>
 				<cells>
-					<Text text="{country>demonym}"
+					<Text text="{=${country>unMember} ? 'Yes' : 'No'}"
 					      wrapping="false"/>
 				</cells>
 				<cells>
@@ -134,7 +136,7 @@
 											}"/>
 				</cells>
 				<cells>
-					<Image src="{country>flag}"
+					<Image src="{country>flags/svg}"
 					       alt="flag"
 					       height="3em"
 					       width="5em"/>

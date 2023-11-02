@@ -217,6 +217,16 @@
 											viewName="opensap.myapp.view.UserData" />
 								</content>
 							</IconTabFilter>
+							<IconTabFilter
+									id="eventCatalogDataControl"
+									text="Event Catalog"									
+									icon="sap-icon://multiselect-none">
+								<content>
+									<mvc:XMLView
+											id="eventCatalogControl"
+											viewName="opensap.myapp.view.EventCatalog" />
+								</content>
+							</IconTabFilter>
 						</items>
 					</IconTabBar>
 				</content>

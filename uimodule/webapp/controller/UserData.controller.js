@@ -11,6 +11,16 @@ sap.ui.define([
 
     return BaseController.extend("opensap.myapp.controller.UserData", {
 
+        onInit: function () {
+			// call the init function of the parent
+			
+			console.log('init sap users')
+			
+
+			// additional initialization can be done here
+
+			
+		},
         onAdd: function (oEvent) {
             console.log("add user");
 

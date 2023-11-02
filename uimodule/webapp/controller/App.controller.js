@@ -43,9 +43,20 @@ sap.ui.define([
 
 			this.loadUserDataModel();
 
+			//this.loadEventCatalog();
+
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
 			console.log("end of init");
+		},
+
+		loadEventCatalog: function(){
+			console.log("load event catalog")
+			var url = "/sap/opu/odata/sap/ZJB_TEST_UI5_SRV"
+			var componentsModel = new sap.ui.model.odata.v2.ODataModel(url, true);
+			this.setModel(componentsModel, 'eventCatalog' )
+			//componentsModel.read("/MainMenuSet");
+			console.log(componentsModel)
 		},
 
 		loadUserDataModel: function () {
@@ -83,7 +94,7 @@ sap.ui.define([
 
 			//country
 			console.log("country model");
-			var oModelCountry = new JSONModel("https://restcountries.com/v2/all");
+			var oModelCountry = new JSONModel("https://restcountries.com/v3.1/all");
 			this.setModel(oModelCountry, "country");
 			console.log(oModelCountry);
 		},
@@ -416,9 +427,10 @@ sap.ui.define([
 			var sQuery = oEvent.getParameter("query");
 			var oTable = this.getView().byId("CountryTable");
 			var oBinding = oTable.getBinding("items");
+			console.log(sQuery)
 
 			if (sQuery) {
-				aFilter.push(new Filter("name", FilterOperator.Contains, sQuery));
+				aFilter.push(new Filter("name/common", FilterOperator.Contains, sQuery));
 			}
 
 			oBinding.filter(aFilter);
@@ -542,6 +554,18 @@ sap.ui.define([
 			console.log(iValue);
 			MessageToast.show(iValue);
 			this.byId("rating").setEnabled(true);
+		},
+
+		onCountryPress: function (oEvent){
+			
+			var sIndex = oEvent.getSource().getSelectedContexts(true)[0].getPath();
+			var iIndex = sIndex.slice(1)
+			var sModel = this.getModel('country');
+			var oData = sModel.getData()[iIndex];
+			console.log(oData.maps.googleMaps)
+			
+			
+			
 		}
 
 

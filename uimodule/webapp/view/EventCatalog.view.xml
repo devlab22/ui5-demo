@@ -1,46 +1,41 @@
 <mvc:View
-    controllerName="opensap.myapp.controller.Clothing"
+    controllerName="opensap.myapp.controller.EventCatalog"
     xmlns="sap.ui.table"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
     xmlns:u="sap.ui.unified"
     xmlns:core="sap.ui.core"
-    xmlns:dnd="sap.ui.core.dnd"
     height="100%">
 
     <TreeTable
-        id="TreeTableBasic"
+        id="TreeEventCatalog"
         rows="{
-							path:'clothing>/catalog/clothing', 
-							parameters: {
-									arrayNames:['categories']
-										}
-						   }"
-        selectionMode="MultiToggle"
-        enableSelectAll="true"
+				path:'eventCatalog>/MainMenuSet',
+                parameters : {
+                    countMode: 'Inline',
+                    expand: 'MainMenuChilds',
+                    navigation: {'MainMenuSet':'MainMenuChilds'},
+                    hierarchyDrillStateFor : 'Expanded',
+                    treeAnnotationProperties : {
+                        hierarchyNodeFor : 'Line',
+                        hierarchyParentNodeFor : 'Pup',
+                        hierarchyDrillStateFor : 'Expanded'
+                    }
+                }                          
+			}"
+        selectionMode="Single"
+        enableSelectAll="false"
         visibleRowCount="20"
-        width="auto" 
+        width="auto"
         editable="false"
         class="sapUiResponsiveMargin"
         visibleRowCountMode="Interactive"
-        
+        ariaLabelledBy="title"
         >
-
-        <dragDropConfig>
-            <dnd:DragDropInfo
-                sourceAggregation="rows"
-                targetAggregation="rows"
-                dragStart="onDragStart"
-                drop="onDrop" />
-        </dragDropConfig>
-
-        <contextMenu>
-           
-        </contextMenu>
 
         <extension>
             <m:OverflowToolbar style="Clear">
-                <m:Title id="title" text="Clothing" />
+                <m:Title id="title" text="Event Catalog" />
                 <m:ToolbarSpacer />
                 <m:Button icon="sap-icon://add" press="onAddClothing" />
                 <m:Button text="Expand all" press="onExpandAll" />
@@ -51,30 +46,30 @@
                 <m:Button text="Expand selection All" press="onExpandSelectionAll" visible="false" />
             </m:OverflowToolbar>
         </extension>
-        <contextMenu></contextMenu>
+
         <columns>
             <Column width="25rem">
-                <m:Label text="Categories" />
+                <m:Label text="Description" />
                 <template>
-                    <m:ObjectIdentifier title="{clothing>name}" titleActive="true" titlePress="onShowDetailClothing" />
+                    <m:ObjectIdentifier title="{eventCatalog>Description}" />
                 </template>
             </Column>
             <Column width="9rem">
-                <m:Label text="Price" />
+                <m:Label text="Component" />
                 <template>
-                    <u:Currency value="{clothing>amount}" currency="{clothing>currency}" />
+                    <m:Label text="{eventCatalog>Component}" />
                 </template>
             </Column>
             <Column width="11rem">
-                <m:Label text="Size" />
+                <m:Label text="Line" />
                 <template>
-                    <m:Select
-                        items="{path: 'clothing>/sizes', templateShareable: true}"
-                        selectedKey="{clothing>size}"
-                        visible="{= !!${clothing>size}}"
-                        forceSelection="false">
-                        <core:Item key="{clothing>key}" text="{clothing>value}" />
-                    </m:Select>
+                    <m:Label text="{eventCatalog>Line}" />
+                </template>
+            </Column>
+            <Column width="11rem">
+                <m:Label text="Parent" />
+                <template>
+                    <m:Label text="{eventCatalog>Pup}" />
                 </template>
             </Column>
         </columns>
