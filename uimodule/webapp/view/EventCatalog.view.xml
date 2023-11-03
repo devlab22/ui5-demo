@@ -15,7 +15,6 @@
                     countMode: 'Inline',
                     expand: 'MainMenuChilds',
                     navigation: {'MainMenuSet':'MainMenuChilds'},
-                    hierarchyDrillStateFor : 'Expanded',
                     treeAnnotationProperties : {
                         hierarchyNodeFor : 'Line',
                         hierarchyParentNodeFor : 'Pup',

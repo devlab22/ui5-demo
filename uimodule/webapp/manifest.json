@@ -113,6 +113,10 @@
 			"clothing": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/clothing.json"
+			},
+			"treeData": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/treeData.json"
 			}
 		},
 		"resources": {

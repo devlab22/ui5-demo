@@ -45,20 +45,9 @@ sap.ui.define([
 
 			this.loadUserDataModel();
 
-			//this.loadEventCatalog();
-
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 
 			console.log("end of init");
-		},
-
-		loadEventCatalog: function(){
-			console.log("load event catalog");
-			var url = "/sap/opu/odata/sap/ZJB_TEST_UI5_SRV";
-			var componentsModel = new sap.ui.model.odata.v2.ODataModel(url, true);
-			this.setModel(componentsModel, "eventCatalog");
-			//componentsModel.read("/MainMenuSet");
-			console.log(componentsModel);
 		},
 
 		loadUserDataModel: function () {

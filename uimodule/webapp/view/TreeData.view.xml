@@ -1,0 +1,88 @@
+<mvc:View
+        controllerName="opensap.myapp.controller.treeData"
+        xmlns="sap.ui.table"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:m="sap.m"
+        xmlns:u="sap.ui.unified"
+        xmlns:core="sap.ui.core"
+        height="100%">
+
+    <TreeTable
+            id="idTreeData"
+            rows="{
+							path:'treeData>/data', 
+							parameters: {
+                                countMode: 'Inline',
+                                treeAnnotationProperties : {
+                                    hierarchyLevelFor : 'level',
+                                    hierarchyNodeFor : 'line',
+                                    hierarchyParentNodeFor : 'pup',
+                                    hierarchyDrillStateFor : 'state'
+                                        }
+							}
+					}"           
+            selectionMode="Single"
+            width="100%"          
+            class="sapUiResponsiveMargin"
+            >
+
+        <extension>
+            <m:OverflowToolbar style="Clear">
+                <m:Title
+                        id="title"
+                        text="Tree Data" />
+                <m:ToolbarSpacer />
+                <m:Button
+                        icon="sap-icon://add"
+                        press="onAddClothing" />
+                <m:Button
+                        text="Expand all"
+                        press="onExpandAll" />
+                <m:Button
+                        text="Collapse all"
+                        press="onCollapseAll" />
+                <m:Button
+                        text="Collapse selection"
+                        press="onCollapseSelection" />
+                <m:Button
+                        text="Expand first level"
+                        press="onExpandFirstLevel" />
+                <m:Button
+                        text="Expand selection"
+                        press="onExpandSelection" />
+                <m:Button
+                        text="Expand selection All"
+                        press="onExpandSelectionAll"
+                        visible="false" />
+            </m:OverflowToolbar>
+        </extension>
+
+        <columns>
+            <Column width="25rem">
+                <m:Label text="Name" />
+                <template>
+                    <m:ObjectIdentifier title="{treeData>description}" />
+                </template>
+            </Column>
+            <Column width="9rem">
+                <m:Label text="Line" />
+                <template>
+                    <m:Text text="{treeData>line}" />
+                </template>
+            </Column>
+            <Column width="9rem">
+                <m:Label text="Level" />
+                <template>
+                    <m:Text text="{treeData>level}" />
+                </template>
+            </Column>
+            <Column width="9rem">
+                <m:Label text="Parent" />
+                <template>
+                    <m:Text text="{treeData>pup}" />
+                </template>
+            </Column>
+        </columns>
+    </TreeTable>
+
+</mvc:View>

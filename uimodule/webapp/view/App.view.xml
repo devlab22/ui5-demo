@@ -227,6 +227,16 @@
 											viewName="opensap.myapp.view.EventCatalog" />
 								</content>
 							</IconTabFilter>
+							<IconTabFilter
+									id="treeDataControl"
+									text="tree data"									
+									icon="sap-icon://multiselect-none">
+								<content>
+									<mvc:XMLView
+											id="idTreeDataView"
+											viewName="opensap.myapp.view.TreeData" />
+								</content>
+							</IconTabFilter>
 						</items>
 					</IconTabBar>
 				</content>
