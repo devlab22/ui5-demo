@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable quotes */
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 sap.ui.define([
 
     "opensap/myapp/controller/BaseController",
@@ -13,13 +16,13 @@ sap.ui.define([
 
         onInit: function () {
 			// call the init function of the parent
-			
-			console.log('init sap users')
-			
+
+			console.log('init sap users');
+
 
 			// additional initialization can be done here
 
-			
+
 		},
         onAdd: function (oEvent) {
             console.log("add user");
@@ -27,7 +30,7 @@ sap.ui.define([
         },
 
         onRemove: function (oEvent) {
-            console.log("remove user")
+            console.log("remove user");
             var oTable = this.byId("UserDataTable");
             if (oTable.getSelectedContexts(true).length === 0) {
                 MessageBox.error("Select an user",  {
@@ -37,16 +40,16 @@ sap.ui.define([
             }
 
             var sContext = oTable.getSelectedContexts()[0].getPath();
-            var oModel = this.getModel("users")
+            var oModel = this.getModel("users");
 
             var message = new Text().bindText(sContext  + "/Stext");
-            message.setModel(oModel)
-                   
+            message.setModel(oModel);
+
             MessageBox.confirm(`Do you want to delete ${message.getText()}?`, {
                 onClose: (okcode) => {
-                    if(okcode === "OK"){
+                    if (okcode === "OK"){
                         console.log("delete");
-                        console.log(oModel)
+                        console.log(oModel);
                     }
                 }
             });
@@ -65,13 +68,13 @@ sap.ui.define([
             }
 
             var sContext = oTable.getSelectedContexts(true)[0].getPath();
-            
+
         },
 
         onSelectionChange: function(oEvent) {
-            var sContext = oEvent.getSource()._aSelectedPaths[0]
-            console.log(sContext)
-            
+            var sContext = oEvent.getSource()._aSelectedPaths[0];
+            console.log(sContext);
+
           }
 
     });

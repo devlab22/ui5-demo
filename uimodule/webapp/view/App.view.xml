@@ -199,7 +199,7 @@
 							</IconTabFilter>
 							<IconTabFilter
 									id="treeTableControl"
-									text="tree table"
+									text="Clothing Catalog"
 									icon="sap-icon://multiselect-none">
 								<content>
 									<mvc:XMLView

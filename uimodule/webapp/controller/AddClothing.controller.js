@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 sap.ui.define([
 
 	"sap/m/MessageToast",
@@ -8,7 +9,7 @@ sap.ui.define([
 	"use strict";
 
 	return BaseController.extend("opensap.myapp.controller.AddClothing", {
-
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 
 		onInit: function () {
 			// call the init function of the parent
@@ -40,7 +41,7 @@ sap.ui.define([
 
 
 		},
-		
+
 		onCancel: function(){
 			this.onNavBack();
 		},
@@ -103,7 +104,7 @@ sap.ui.define([
 				oResult["msg"] = "set price";
 				return oResult;
 			}
-			
+
 			return oResult;
 
 		}

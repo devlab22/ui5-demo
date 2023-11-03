@@ -1,31 +1,32 @@
-sap.ui.define([ 
-	
-	'sap/m/Menu', 
-	
-	'sap/m/MenuItem',
+/* eslint-disable no-unused-vars */
+sap.ui.define([
+
+	"sap/m/Menu",
+
+	"sap/m/MenuItem",
 
 	"opensap/myapp/controller/BaseController"
-	
+
 ], function (Menu, MenuItem, BaseController) {
 	"use strict";
 
 	return BaseController.extend("opensap.myapp.controller.Clothing", {
 
-		
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 
-		onInit : function () {
+		onInit: function () {
 			// call the init function of the parent
-			
-			this.byId("TreeTableBasic").setContextMenu(new Menu({
+
+			/* this.byId("TreeTableBasic").setContextMenu(new Menu({
 					items: [
 						new MenuItem({text: "{text}"})
 					]
-				}));
-			
+				})); */
+
 
 			// additional initialization can be done here
 		},
-		
+
 		onCollapseAll: function() {
 			var oTreeTable = this.byId("TreeTableBasic");
 			oTreeTable.collapseAll();
@@ -45,51 +46,51 @@ sap.ui.define([
 			var oTreeTable = this.byId("TreeTableBasic");
 			oTreeTable.expand(oTreeTable.getSelectedIndices());
 		},
-		
+
 		onExpandSelectionAll: function() {
 			var oTreeTable = this.byId("TreeTableBasic");
 			oTreeTable.expand(oTreeTable.getSelectedIndices());
 		},
-		
+
 		onExpandAll: function(){
 			var oTreeTable = this.byId("TreeTableBasic");
 			oTreeTable.expandToLevel(50);
 		},
-		
+
 		onShowDetailClothing: function(oEvent){
 			var sPath = "clothing>" + oEvent.getSource().getBindingContext("clothing").getPath();
 			console.log(sPath);
-			
+
 		},
-		
+
 		onAddClothing: function(oEvent){
 			console.log("onAddClothing");
-			
+
 			var oTreeTable = this.byId("TreeTableBasic");
 			var idx = -1;
-			if(oTreeTable.getSelectedIndices().length > 0){
+			if (oTreeTable.getSelectedIndices().length > 0){
 				idx = oTreeTable.getSelectedIndices()[0];
 			}
-			
-			console.log(idx);			
+
+			console.log(idx);
 			var sPath = "";
-			if(idx >= 0){
+			if (idx >= 0){
 				sPath = "clothing>" + oTreeTable.getContextByIndex(idx).getPath();
-			}else{
+			} else {
 				sPath = "clothing>" + oTreeTable.getBinding("rows").getPath();
 			}
-			
+
 			console.log(sPath);
 			console.log(window.encodeURIComponent(sPath));
 			sPath = window.encodeURIComponent(sPath);
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.navTo("addClothing",{
+			oRouter.navTo("addClothing", {
 					ClothingPath: sPath
 				});
-			
+
 		},
-		
-		onDragStart : function (oEvent) {
+
+		onDragStart: function (oEvent) {
 			console.log("onDragStart");
 			console.log(oEvent);
 			var oTree = this.byId("TreeTableBasic");
@@ -122,7 +123,7 @@ sap.ui.define([
 				draggedItemContexts: aDraggedItemContexts
 			});
 		},
-		
+
 		onDrop: function (oEvent) {
 			console.log("onDrop");
 			var oTree = this.byId("TreeTableBasic");

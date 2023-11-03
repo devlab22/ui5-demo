@@ -23,20 +23,7 @@
         editable="false"
         class="sapUiResponsiveMargin"
         visibleRowCountMode="Interactive"
-        
         >
-
-        <dragDropConfig>
-            <dnd:DragDropInfo
-                sourceAggregation="rows"
-                targetAggregation="rows"
-                dragStart="onDragStart"
-                drop="onDrop" />
-        </dragDropConfig>
-
-        <contextMenu>
-           
-        </contextMenu>
 
         <extension>
             <m:OverflowToolbar style="Clear">
@@ -51,7 +38,7 @@
                 <m:Button text="Expand selection All" press="onExpandSelectionAll" visible="false" />
             </m:OverflowToolbar>
         </extension>
-        <contextMenu></contextMenu>
+        
         <columns>
             <Column width="25rem">
                 <m:Label text="Categories" />

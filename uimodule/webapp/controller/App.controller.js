@@ -1,15 +1,17 @@
+/* eslint-disable no-unused-vars */
 sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
 	"opensap/myapp/controller/NorthwindTable.controller",
-	"opensap/myapp/controller/BaseController"
+	"opensap/myapp/controller/BaseController",
+	"opensap/myapp/model/formatter"
 ], function (MessageToast, Filter, FilterOperator, JSONModel,
-	northwindTableController, BaseController) {
+	northwindTableController, BaseController, formatter) {
 
 	return BaseController.extend("opensap.myapp.controller.App", {
-
+/* eslint no-console: ["error", { allow: ["warn", "error", "log"] }] */
 		northwindTableController: northwindTableController,
 
 		_mFilters: {
@@ -51,34 +53,34 @@ sap.ui.define([
 		},
 
 		loadEventCatalog: function(){
-			console.log("load event catalog")
-			var url = "/sap/opu/odata/sap/ZJB_TEST_UI5_SRV"
+			console.log("load event catalog");
+			var url = "/sap/opu/odata/sap/ZJB_TEST_UI5_SRV";
 			var componentsModel = new sap.ui.model.odata.v2.ODataModel(url, true);
-			this.setModel(componentsModel, 'eventCatalog' )
+			this.setModel(componentsModel, "eventCatalog");
 			//componentsModel.read("/MainMenuSet");
-			console.log(componentsModel)
+			console.log(componentsModel);
 		},
 
 		loadUserDataModel: function () {
 
 
 			// sap userData
-			var url = ""
+			var url = "";
 			//url = this.getUrl("/sap/opu/odata/sap/ZVE_USERUI5_SRV/");
 			url = "/sap/opu/odata/sap/ZVE_USERUI5_SRV";
-			var oModelUser = new sap.ui.model.odata.v2.ODataModel(url, true)
+			var oModelUser = new sap.ui.model.odata.v2.ODataModel(url, true);
 
 			oModelUser.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
-			
+
 			this.setModel(oModelUser, "users");
 			console.log("model users");
 			console.log(oModelUser);
 
-			oModelUser.read("/UserDataSet/$count" , {
-				success: (count) => {	
-					this.setIconTabProperties({view: this.getView(), tabId: "userDataControl", count: count});					
+			oModelUser.read("/UserDataSet/$count", {
+				success: (count) => {
+					this.setIconTabProperties({view: this.getView(), tabId: "userDataControl", count: count});
 				}
-			})
+			});
 
 
 			/*
@@ -127,8 +129,8 @@ sap.ui.define([
 				oModelNorthwind.read(sPath, {
 					filters: oFilter,
 					success: function (oData) {
-						var sPath = "/" + sKey;
-						oNorthwindModel.setProperty(sPath, oData);
+						var sPath1 = "/" + sKey;
+						oNorthwindModel.setProperty(sPath1, oData);
 					}
 				});
 			});
@@ -427,7 +429,7 @@ sap.ui.define([
 			var sQuery = oEvent.getParameter("query");
 			var oTable = this.getView().byId("CountryTable");
 			var oBinding = oTable.getBinding("items");
-			console.log(sQuery)
+			console.log(sQuery);
 
 			if (sQuery) {
 				aFilter.push(new Filter("name/common", FilterOperator.Contains, sQuery));
@@ -557,15 +559,15 @@ sap.ui.define([
 		},
 
 		onCountryPress: function (oEvent){
-			
+
 			var sIndex = oEvent.getSource().getSelectedContexts(true)[0].getPath();
-			var iIndex = sIndex.slice(1)
-			var sModel = this.getModel('country');
+			var iIndex = sIndex.slice(1);
+			var sModel = this.getModel("country");
 			var oData = sModel.getData()[iIndex];
-			console.log(oData.maps.googleMaps)
-			
-			
-			
+			console.log(oData.maps.googleMaps);
+
+
+
 		}
 
 
