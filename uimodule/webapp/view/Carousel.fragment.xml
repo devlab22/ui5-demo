@@ -3,7 +3,7 @@
 		xmlns:f="sap.ui.layout.form"
 		xmlns:l="sap.ui.layout"
 		xmlns:core="sap.ui.core">
-	<Carousel>
+	<Carousel height='100%'>
 		<pages>
 			<Image
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Wikipedia_Hello_World_Graphic.svg/2000px-Wikipedia_Hello_World_Graphic.svg.png"
