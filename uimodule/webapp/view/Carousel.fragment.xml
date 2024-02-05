@@ -28,16 +28,29 @@
 					height="400px" />
 		</pages>
 	</Carousel>
-	<HBox>
-		<Button
-				text="{i18n>showHelloButtonText}"
-				press="onShowHello" />
-		<Input
-				value="{helloPanel>/recipient/name}"
-				description="Hello {helloPanel>/recipient/name}"
-				valueLiveUpdate="true"
-				width="60rem" />
-	</HBox>
+	<VBox
+	>
+		<HBox>
+			<Button
+					text="{i18n>showHelloButtonText}"
+					press="onShowHello" />
+			<Input
+					value="{helloPanel>/recipient/name}"
+					description="Hello {helloPanel>/recipient/name}"
+					valueLiveUpdate="true"
+					width="60rem" />
+		</HBox>
+		<HBox>
+			<FlexBox>
+				<Label text='Vorname'/>
+				<Input value='{person>/firstname}'/>
+				<Label text='Nachname'/>
+				<Input value='{person>/lastname}'/>
+			</FlexBox>
+			
+		</HBox>
+	</VBox>
+
 	<VBox>
 		<Panel
 				headerText="Delivery Methode"
@@ -123,5 +136,32 @@
 						type="Accept" />
 			</Toolbar>
 		</Panel>
+
+		<Table
+			alternateRowColors="true"
+			items="{person>/personen}"
+		>
+			<columns>
+				<Column>
+					<Text text='Vorname'/>
+				</Column>
+				<Column>
+					<Text text='Nachname'/>
+				</Column>
+				<Column>
+					<Text text='Geburtsdatum'/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text='{person>Vorname}'/>
+						<Text text='{person>Nachname}'/>
+						<Text text='{person>Geburtsdatum}'/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		
 	</VBox>
 </core:FragmentDefinition>
