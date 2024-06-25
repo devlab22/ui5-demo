@@ -6,12 +6,12 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("opensap.myapp.controller.BaseController", {
-		
+
 		bDebug: false,
 		formatter: formatter,
-		
+
 		onNavBack: function () {
-			console.log("base controller onNavBack");
+			//console.log("base controller onNavBack");
 			var oHistory, sPreviousHash;
 
 			oHistory = History.getInstance();

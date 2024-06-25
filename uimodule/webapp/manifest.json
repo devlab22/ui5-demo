@@ -80,6 +80,10 @@
 					"bundleName": "opensap.myapp.i18n.i18n"
 				}
 			},
+			"person": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/data.json"
+			},
 			"address": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/Address.json"
