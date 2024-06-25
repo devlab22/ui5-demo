@@ -30,7 +30,7 @@
         class="sapUiResponsiveMargin"
         visibleRowCountMode="Interactive"
         ariaLabelledBy="title"
-        >
+    >
 
         <extension>
             <m:OverflowToolbar style="Clear">
@@ -46,6 +46,24 @@
             </m:OverflowToolbar>
         </extension>
 
+        <contextMenu>
+            <m:Menu>
+                <m:MenuItem
+                    text="add"
+                    icon="sap-icon://add"
+                    key="fc_add"
+                    press="onPressMenu"
+                />
+
+                <m:MenuItem
+                    text="details"
+                    icon="sap-icon://information"
+                    key="fc_details"
+                    press="onPressMenu"
+                />
+
+            </m:Menu>
+        </contextMenu>
         <columns>
             <Column width="25rem">
                 <m:Label text="Description" />

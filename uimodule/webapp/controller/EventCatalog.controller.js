@@ -18,7 +18,18 @@ sap.ui.define([
 
 			/* this.byId("TreeEventCatalog").setContextMenu(new Menu({
 					items: [
-						new MenuItem({text: "menu 1"})
+						new MenuItem({
+							text: "add",
+							icon: "sap-icon://add",
+							key: "fc_add",
+							press: "onPressMenu"
+						}),
+						new MenuItem({
+							text: "details",
+							icon: "sap-icon://information",
+							key: "fc_info",
+							press: "onPressMenu"
+						})
 					]
 				})); */
 
@@ -26,6 +37,13 @@ sap.ui.define([
 			// additional initialization can be done here
 				this.loadData();
 
+		},
+
+		onPressMenu: function(oEvent){
+			//console.log(oEvent)
+			//console.log(oEvent.getParameters())
+			console.log(oEvent.getSource().getProperty('key'))
+			console.log(oEvent.getSource().getBindingContext('eventCatalog').getPath())
 		},
 
 		loadData: function(){
